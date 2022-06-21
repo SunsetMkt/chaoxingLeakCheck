@@ -1,8 +1,8 @@
 <?php
 // Open file
-$file = fopen("school.txt", "r");
+$file = fopen(__DIR__ . '/../data/school.txt', "r");
 // Read file
-$content = fread($file, filesize("school.txt"));
+$content = fread($file, filesize(__DIR__ . '/../data/school.txt'));
 // Close file
 fclose($file);
 // Split file by line
@@ -43,4 +43,3 @@ if ($query == "") {
         echo json_encode($returnArray);
     }
 }
-?>
