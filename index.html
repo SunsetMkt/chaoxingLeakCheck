@@ -1,0 +1,73 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超星学习通数据泄露按教育机构自查</title>
+    <!-- Bootstrap CSS via CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <script>
+        function query(q) {
+            // API Call
+            var url = "api/query.php?q=" + q;
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        var data = JSON.parse(xhr.responseText);
+                        var html = "";
+                        for (var i = 0; i < data.length; i++) {
+                            html += "<tr>";
+                            html += "<td>" + data[i] + "</td>";
+                            html += "</tr>";
+                        }
+                        document.getElementById("result").innerHTML = html;
+                    } else {
+                        alert("Error: " + xhr.status);
+                    }
+                }
+            };
+            xhr.send(null);
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>超星学习通数据泄露按教育机构自查</h1>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Introduction -->
+            <div class="col-md-12">
+                <a href="https://www.zhihu.com/question/538640614">相关链接</a>
+            </div>
+            <!-- Search Form -->
+            <div class="col-md-12">
+                <form>
+                    <div class="form-group">
+                        <label for="q">查询关键字</label>
+                        <input type="text" class="form-control" id="q" placeholder="请输入查询关键字">
+                    </div>
+                    <button type="button" class="btn btn-primary"
+                        onclick="query(document.getElementById('q').value)">查询</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>机构名称</th>
+                        </tr>
+                    </thead>
+                    <tbody id="result">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
