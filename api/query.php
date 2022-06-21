@@ -24,8 +24,8 @@ if ($query == "") {
     $returnArray = array();
     // Check every line
     foreach ($lines as $line) {
-        // Check if line contain query string
-        if (strpos($line, $query) !== false) {
+        // Check if line contain query string, all lowercase
+        if (strpos(strtolower($line), strtolower($query)) !== false) {
             // Push line to return array
             array_push($returnArray, $line);
         }
